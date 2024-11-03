@@ -12,7 +12,7 @@ void displayPlayerCards(std::vector<Player>& players, sf::Font& font, int& scale
             for (size_t j = 0; j < players.at(i).numOfCards(); j++){
                 sf::Texture card;
                 if (!card.loadFromFile(resourcePath() + "Images/" + players.at(i).getCard(j).toString() + ".png"))
-                return EXIT_FAILURE;
+                    std::cerr << "Failed to load card image: " << players.at(i).getCard(i).toString() << ".png" << std::endl;
                 sf::Sprite cardHolder(card);
                 sf::Text name;
                 name.setFont(font);
@@ -102,10 +102,10 @@ void displayHiddenHouse(std::vector<Player>& players, const sf::Font& font, int&
     sf::Text houseTotal;
     sf::Texture hiddenCard;
     if (!hiddenCard.loadFromFile(resourcePath() + "Images/gray_back.png"))
-        return EXIT_FAILURE;
+        std::cerr << "Failed to load hidden card image: gray_back.png" << std::endl;
     sf::Texture houseCard;
     if (!houseCard.loadFromFile(resourcePath() + "Images/" + house.getCard(1).toString() + ".png"))
-        return EXIT_FAILURE;
+        std::cerr << "Failed to load house card image: " << house.getCard(1).toString() << ".png" << std::endl;
     houseName.setFont(font);
     houseName.setString("House");
     houseName.setFillColor(sf::Color::White);
@@ -162,7 +162,7 @@ void revealHouse(std::vector<Player>& players, const sf::Font& font, int& scale,
         sf::Text busted;
         sf::Texture houseCard;
         if (!houseCard.loadFromFile(resourcePath() + "Images/" + house.getCard(i).toString() + ".png"))
-            return EXIT_FAILURE;
+            std::cerr << "Failed to load house card image: " << house.getCard(i).toString() << ".png" << std::endl;
         houseName.setFont(font);
         houseName.setString("House");
         houseName.setFillColor(sf::Color::White);
