@@ -22,8 +22,8 @@ Game::Game(std::vector<Player>& players, int& scale){
 
 //plays a round of Blackjack
 void Game::playRound(sf::RenderWindow& window, bool& release, sf::Font& font){
-    Button hit("Hit", sf::Color::Black, release);
-    Button stand("Stand", sf::Color::Black, release);
+    Button hit("Hit", font, sf::Color::Black, release);
+    Button stand("Stand", font, sf::Color::Black, release);
     if (players.size() < 3) {
         hit.setPos({30, 80});
         stand.setPos({190, 80});
@@ -36,20 +36,17 @@ void Game::playRound(sf::RenderWindow& window, bool& release, sf::Font& font){
         hit.setPos({15, 60});
         stand.setPos({107, 60});
     }
-    sf::Text currPlayer;
-    currPlayer.setFont(font);
-    currPlayer.setCharacterSize(40);
+    sf::Text currPlayer(font, players.at(currentPlayer).getName() + ":", 40);
     currPlayer.setFillColor(sf::Color::White);
-    currPlayer.setString(players.at(currentPlayer).getName() + ":");
-    currPlayer.setPosition(15, 5);
+    currPlayer.setPosition(sf::Vector2f(15, 5));
     displayPlayerCards(players, font, scale, window);
     if(getState() == GameState::HITTING){
         displayPlayerTotal(players, font, scale, window);
     if(counter < players.size()){
         window.draw(currPlayer);
         displayHiddenHouse(players, font, scale, window, house);
-        displayButton(players, font, hit, scale, window);
-        displayButton(players, font, stand, scale, window);
+        displayButton(players, hit, scale, window);
+        displayButton(players, stand, scale, window);
         if(!playingDeck.drawMore(players.at(currentPlayer), hit, stand)){
             currentPlayer = (currentPlayer + 1) % players.size();
             counter++;

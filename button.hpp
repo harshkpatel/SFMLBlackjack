@@ -25,9 +25,10 @@ private:
     bool release;
     sf::RectangleShape button;
     sf::Text text;
-public: 
-    Button(std::string text, sf::Color color, bool& release);
-    
+public:
+    Button(std::string text, const sf::Font& font, sf::Color color, bool& release);
+
+    void setText(std::string &text);
     void setFont(const sf::Font& font);
     void setSize(sf::Vector2f size);
     void setPos(sf::Vector2f pos);

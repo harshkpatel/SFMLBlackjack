@@ -18,7 +18,7 @@
 
 void displayPlayerCards(std::vector<Player>& players, sf::Font& font, int& scale, sf::RenderWindow& window);
 void displayPlayerTotal(std::vector<Player>& players, const sf::Font& font, int& scale, sf::RenderWindow& window);
-void displayButton(std::vector<Player>& players, const sf::Font& font, Button& button, int& scale, sf::RenderWindow& window);
+void displayButton(std::vector<Player>& players, Button& button, int& scale, sf::RenderWindow& window);
 void displayHiddenHouse(std::vector<Player>& players, const sf::Font& font, int& scale, sf::RenderWindow& window, House& house);
 void displayCurrentPlayer(Player player, const sf::Font& font, int& scale, sf::RenderWindow& window);
 void revealHouse(std::vector<Player>& players, const sf::Font& font, int& scale, sf::RenderWindow& window, House& house);
